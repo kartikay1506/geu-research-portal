@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Era University</title>
+    <link href="/img/theme/geu-header-logo.png" rel="icon" type="image/png">
+    <!-- Icons -->
+    <link href="/js/plugins/nucleo/css/nucleo.css" rel="stylesheet" />
+    <link href="/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link href="/css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
+</head>
+<style>
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+    }
+
+    input[type=date]::-webkit-inner-spin-button, 
+    input[type=date]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+    }
+
+    .password-view {
+        color: #1a75ff;
+    }
+    .correct {
+        border: 1px solid #28a745;
+    }
+    .wrong {
+        border: 1px solid #dc3545;
+    }
+</style>
+<body>
+    <%- body%>
+</body>
+<!--   Core   -->
+<script src="/js/plugins/jquery/dist/jquery.min.js"></script>
+<script src="/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/argon-dashboard.min.js?v=1.1.0"></script>
+<script src="/js/sweetalert.min.js"></script>
+<script src="/js/messages.js"></script>
+<script>
+    $('.toggle-password').click(function() {
+      var type = $('#password').attr("type");
+      if(type === "password") {
+        $('.toggle-password').addClass('password-view');
+        $('#password').attr("type","text");
+      }
+      else {
+        $('.toggle-password').removeClass('password-view');
+        $('#password').attr("type","password");
+      }
+    });
+</script>
+<script>
+    $('#confirmpassword').keyup(function() {
+        var pass = $('#password').val();
+        var repass = $(this).val();
+        if(pass === repass) {
+          $('#signup').removeAttr("disabled");
+          $('.repass').removeClass("wrong");
+          $('.repass').addClass("correct");
+        }
+        else {
+          $('#signup').attr("disabled",true);
+          $('.repass').removeClass("correct");
+          $('.repass').addClass("wrong");
+        }
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        var code = "";
+        var departments = ["Computer Science and Engineering", "Civil Engineering", "Biotechnology", "Electronics and Communication Engineering", "Electrical Engineering", "Mechanical Engineering", "Petroleum Engineering", "Allied Sciences", "Computer Application", "Life Science"];
+        departments.forEach(function(department) {
+            code = code + '<option value="'+department+'">'+department+'</option>';
+        });
+        $('#departments option').remove();
+        $('#departments').append(code);
+    });
+</script>
+<script>
+    $('.status').change(function() {
+        var val = $(this).val();
+        if(val == "Accepted" || val == "Published") {
+            $('#publicationyear').attr("required", true);
+            $('#publicationdetails').show();
+        }
+        else {
+            $('#publicationyear').removeAttr("required");
+            $('#publicationdetails').hide();
+        }
+    });
+</script>
+<script>
+    $('.patent-status').change(function() {
+        var val = $(this).val();
+        if(val == "Granted" || val == "Published") {
+            $('.patentdetails').attr("required", true);
+            $('#patentdetails').show();
+        }
+        else {
+            $('.patentdetails').removeAttr("required");
+            $('#patentdetails').hide();
+        }
+    });
+</script>
+<script>
+    $('.project-status').change(function() {
+        var val = $(this).val();
+        if(val == "Approved") {
+            $('#projectdetails').show();
+            $('#projectdetails input').attr("required", "true");
+
+        }
+        else {
+            $('#projectdetails').hide();
+            $('#projectdetails input').removeAttr("required");
+        }
+    });
+</script>
+<script>
+    $('#number_author').on("input", function() {
+        var val = $(this).val();
+        var code = '';
+        if(val > 0) {
+            for(var i=1;i<=val;i++) {
+                code = code + '<div class="form-group row mt-3"><div class="col-md-3"><h4 class="mt-2">Name of Author '+i+' :</h4></div><div class="col-md-8"><input type="text" class="form-control" name="author[]" placeholder="Full Name" required></div></div><div class="form-group row"><div class="col-md-3"><h4 class="mt-2">Department :</h4></div><div class="col-md-8"><input type="text" class="form-control" name="department[]" list="departments" placeholder="Department" required></div></div>';
+            }
+            $('#authordetails .row').remove();
+            $('#authordetails').append(code);
+            $('#authordetails').show();
+        }
+        else {
+            $('#authordetails .row').remove();
+            $('#authordetails').hide();
+        }
+    });
+</script>
+<script>
+    $('#number_inventor').on("input", function() {
+        var val = $(this).val();
+        var code = '';
+        if(val > 0) {
+            for(var i=1;i<=val;i++) {
+                code = code + '<div class="form-group row mt-3"><div class="col-md-3"><h4 class="mt-2">Name of Inventor '+i+' :</h4></div><div class="col-md-8"><input type="text" class="form-control" name="inventor[]" placeholder="Full Name" required></div></div>';
+            }
+            $('#inventordetails .row').remove();
+            $('#inventordetails').append(code);
+            $('#inventordetails').show();
+        }
+        else {
+            $('#inventordetails .row').remove();
+            $('#inventordetails').hide();
+        }
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        var code = "";
+        var date = new Date();
+        var currentyear = parseInt(date.getFullYear());
+        var i = 1990;
+        while(i <= currentyear) {
+            code = code + '<option value="'+i+'">'+i+'</option>';
+            i++;
+        }
+        $('#publicationyear option').remove();
+        $('#publicationyear').append(code);
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        var code = "";
+        var date = new Date();
+        var currentyear = parseInt(date.getFullYear());
+        var i = 1990;
+        while(i <= currentyear) {
+            code = code + '<option value="'+i+'">'+i+'</option>';
+            i++;
+        }
+        $('#patentyear option').remove();
+        $('#patentyear').append(code);
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        var code = "";
+        var date = new Date();
+        var currentyear = parseInt(date.getFullYear());
+        var i = 1990;
+        while(i <= currentyear) {
+            code = code + '<option value="'+i+'">'+i+'</option>';
+            i++;
+        }
+        $('#awardyear option').remove();
+        $('#awardyear').append(code);
+    });
+</script>
+</html>

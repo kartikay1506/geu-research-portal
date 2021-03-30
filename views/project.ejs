@@ -1,0 +1,187 @@
+<div class="main-content">
+    <!-- Navbar -->
+    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+      <div class="container-fluid">        
+        <!-- User -->
+        <ul class="navbar-nav align-items-center d-none d-md-flex" style="margin-left: auto;">
+          <li class="nav-item dropdown">
+            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="media align-items-center">
+                <span class="avatar avatar-sm rounded-circle">
+                  <img alt="Image placeholder" src="/img/theme/user.png">
+                </span>
+                <div class="media-body ml-2 d-none d-lg-block">
+                  <span class="mb-0 text-sm  font-weight-bold">Welcome User</span>
+                </div>
+              </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+              <div class=" dropdown-header noti-title">
+                <h6 class="text-overflow m-0">Welcome!</h6>
+              </div>
+              <a href="#" class="dropdown-item">
+                <i class="ni ni-single-02"></i>
+                <span>My profile</span>
+              </a>
+              <a href="#" class="dropdown-item">
+                <i class="ni ni-settings-gear-65"></i>
+                <span>Settings</span>
+              </a>
+              <a href="#" class="dropdown-item">
+                <i class="ni ni-calendar-grid-58"></i>
+                <span>Activity</span>
+              </a>
+              <a href="#" class="dropdown-item">
+                <i class="ni ni-support-16"></i>
+                <span>Support</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="/logout" class="dropdown-item">
+                <i class="ni ni-user-run"></i>
+                <span>Logout</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <!-- Header -->
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8"></div>
+    <div class="container-fluid mt--8">
+      <div class="row">
+        <div class="col-xl-12">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h2>Project Details</h2>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <form action="/projectdetails" method="post">
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <h4 class="mt-2">Name of the Project / Endowments, Chairs :</h4>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="projecttitle" placeholder="Project Name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <h4 class="mt-2">Name of the Principal Investigator / Co Investigator :</h4>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="principalinvestigator" placeholder="Full Name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <h4 class="mt-2">Name of the Funding Agency :</h4>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="fundingagency" placeholder="Funding Agency" required>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <h4 class="mt-2">Department :</h4>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="department" list="departments" placeholder="Department" required>
+                            </div>
+                        </div>
+                        <datalist id="departments"></datalist>
+
+                        <div class="form-group row">
+                          <div class="col-md-3">
+                              <h4 class="mt-2">Type :</h4>
+                          </div>
+                          <div class="col-md-8 mt-2">
+                              <div class="form-check-inline">
+                                  <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="projecttype" id="type-government" value="Government" required>Government
+                                  </label>
+                                </div>
+                                <div class="form-check-inline">
+                                  <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="projecttype" id="type-nongovernment" value="Non-Government" required>Non-Government
+                                  </label>
+                                </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-md-3">
+                            <h4 class="mt-2">Status :</h4>
+                        </div>
+                        <div class="col-md-8 mt-2">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                  <input type="radio" class="form-check-input project-status" name="status" id="status-submitted" value="Submitted" required>Submitted
+                                </label>
+                              </div>
+                              <div class="form-check-inline">
+                                <label class="form-check-label">
+                                  <input type="radio" class="form-check-input project-status" name="status" id="status-approved" value="Approved" required>Approved
+                                </label>
+                              </div>
+                        </div>
+                    </div>
+
+                    <div id="projectdetails" style="display: none;">
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <h4 class="mt-2">Year of Award :</h4>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="number" class="form-control" name="awardyear" list="awardyear" placeholder="Year" required>
+                                <datalist id="awardyear"></datalist>
+                            </div>
+                        </div>
+    
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <h4 class="mt-2">Funds Provided (INR in Lakhs) :</h4>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="number" class="form-control" name="fundreceived" placeholder="INR in Lakhs" required>
+                            </div>
+                        </div>
+    
+                        <div class="form-group row" >
+                            <div class="col-md-3">
+                                <h4 class="mt-2">Duration of the Project :</h4>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" name="durationyear" placeholder="Year" list="durationyear" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" name="durationmonth" placeholder="Months" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                      <div class="container" style="margin-left: 15vw;">
+                          <button class="btn btn-success btn-block w-25">Submit</button>
+                      </div>
+                      </form>
+                    </div>
+
+                    <div class="col-md-4 ml--4" style="border:1px solid #000;border-radius: 10px;">
+                        <div class="container mt-3" style="text-align: center;">
+                          <h3>Recent Projects</h3>
+                        </div>
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

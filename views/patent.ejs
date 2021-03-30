@@ -1,0 +1,171 @@
+<div class="main-content">
+    <!-- Navbar -->
+    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+      <div class="container-fluid">        
+        <!-- User -->
+        <ul class="navbar-nav align-items-center d-none d-md-flex" style="margin-left: auto;">
+          <li class="nav-item dropdown">
+            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="media align-items-center">
+                <span class="avatar avatar-sm rounded-circle">
+                  <img alt="Image placeholder" src="/img/theme/user.png">
+                </span>
+                <div class="media-body ml-2 d-none d-lg-block">
+                  <span class="mb-0 text-sm  font-weight-bold">Welcome User</span>
+                </div>
+              </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+              <div class=" dropdown-header noti-title">
+                <h6 class="text-overflow m-0">Welcome!</h6>
+              </div>
+              <a href="#" class="dropdown-item">
+                <i class="ni ni-single-02"></i>
+                <span>My profile</span>
+              </a>
+              <a href="#" class="dropdown-item">
+                <i class="ni ni-settings-gear-65"></i>
+                <span>Settings</span>
+              </a>
+              <a href="#" class="dropdown-item">
+                <i class="ni ni-calendar-grid-58"></i>
+                <span>Activity</span>
+              </a>
+              <a href="#" class="dropdown-item">
+                <i class="ni ni-support-16"></i>
+                <span>Support</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="/logout" class="dropdown-item">
+                <i class="ni ni-user-run"></i>
+                <span>Logout</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <!-- Header -->
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8"></div>
+    <div class="container-fluid mt--8">
+      <div class="row">
+        <div class="col-xl-12">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h2>Patent Details</h2>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <form action="/patentdetails" method="post">
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <h4 class="mt-2">Title of the Patent :</h4>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="patenttitle" placeholder="Title of the Patent" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <h4 class="mt-2">Team Leader :</h4>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="teamleader" placeholder="Full Name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <div class="col-md-3">
+                              <h4 class="mt-2">Number of Inventor/s :</h4>
+                          </div>
+                          <div class="col-md-8">
+                              <input type="number" class="form-control" id="number_inventor" name="number_inventor" min="0" placeholder="Number of Inventor/s" required>
+                          </div>
+                        </div>
+
+                        <div id="inventordetails" style="display:none"></div>
+
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <h4 class="mt-2">Department :</h4>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="department" list="departments" placeholder="Department" required>
+                            </div>
+                        </div>
+                        <datalist id="departments"></datalist>
+
+                        <div class="form-group row">
+                          <div class="col-md-3">
+                              <h4 class="mt-2">Status :</h4>
+                          </div>
+                          <div class="col-md-8 mt-2">
+                              <div class="form-check-inline">
+                                  <label class="form-check-label">
+                                    <input type="radio" class="form-check-input patent-status" name="status" id="status-filed" value="Filed" required>Filed
+                                  </label>
+                                </div>
+                                <div class="form-check-inline">
+                                  <label class="form-check-label">
+                                    <input type="radio" class="form-check-input patent-status" name="status" id="status-published" value="Published" required>Published
+                                  </label>
+                                </div>
+                                <div class="form-check-inline">
+                                  <label class="form-check-label">
+                                    <input type="radio" class="form-check-input patent-status" name="status" id="status-granted" value="Granted" required>Granted
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group row" >
+                          <div class="col-md-3">
+                              <h4 class="mt-2">Filed On :</h4>
+                          </div>
+                          <div class="col-md-8">
+                              <input type="date" class="form-control" name="filedon" id="filedon" placeholder="Filed On" required>
+                          </div>
+                      </div>
+
+                      <div id="patentdetails" style="display: none;">
+                        <div class="form-group row" >
+                            <div class="col-md-3">
+                                <h4 class="mt-2">Patent Number :</h4>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control patentdetails" name="patentnumber" placeholder="Patent Number" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <h4 class="mt-2">Year of Award of Patent :</h4>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="number" class="form-control patentdetails" name="patentyear" list="patentyear" placeholder="Year" required>
+                                <datalist id="patentyear"></datalist>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="container" style="margin-left: 15vw;">
+                          <button class="btn btn-success btn-block w-25" type="submit" id="submit">Submit</button>
+                      </div>
+                      </form>
+                    </div>
+
+                    <div class="col-md-4 ml--4" style="border:1px solid #000;border-radius: 10px;">
+                        <div class="container mt-3" style="text-align: center;">
+                          <h3>Recent Patents</h3>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
